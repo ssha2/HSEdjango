@@ -25,13 +25,12 @@ def calc(request):
     return render(request, "calc.html")
 
 def surv_result(request):
+    try:
+        survey = Survey(request.POST)
+        #survey.changed_data[""]
 
-    survey = Survey(request.POST)
-    # if is_ajax:
-    #     if request.method == 'GET':
-    #         todos = list(Todo.objects.all().values())
-    #         return JsonResponse({'context': todos})
-    #     return JsonResponse({'status': 'Invalid request'}, status=400)
-    # else:
-    #     return HttpResponseBadRequest('Invalid request')
-    return HttpResponse(survey.frequency)
+        return HttpResponse('{ "capt":"Результат","text":"Данные успешно получены" }')
+    except Exception as e:
+        #return HttpResponse(status=500,text=str(e))
+        return HttpResponse('{ "capt":"Ошибка","text":"'+str(e)+'" }')
+  

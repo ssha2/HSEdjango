@@ -10,10 +10,41 @@
     <link rel="stylesheet" href="{% static "assets/navigate.css" %}">
     <link rel="stylesheet" href="{% static "assets/inputs.css" %}">
     <link rel="stylesheet" href="{% static "assets/survey.css" %}">
+    <link rel="stylesheet" href="{% static "assets/modal.css" %}">
 
     <script src= 
     "{% static "js/jquery.min.js" %}"> 
-        </script> 
+        </script>
+        
+        
+
+        <script name="for_modlas">
+
+            /*
+             показываем модальный div c текстом отправки
+            */ 
+            function showDivWithForm(capt,text)
+            {
+                document.getElementById("mcapt").innerText=capt;
+                document.getElementById("mtext").innerText=text;
+                document.getElementById("divModalUser").style.display = "block";
+                setTimeout(()=>onclickSpanToHideCurentDiv('divModalUser'),1500);
+
+            }
+        
+            // скрываем div по его ID
+    
+            function onclickSpanToHideCurentDiv(visibled_divID)
+            {
+                document.getElementById(visibled_divID).style.display = "none";
+                document.getElementById("mcapt").innerText="";
+                document.getElementById("mtext").innerText="";
+            }
+
+    
+    
+    
+        </script>      
 
 </head>
 
@@ -26,7 +57,7 @@
     <nav class="fixed-nav-bar">
         <div id="menu" class="menu">
             <ul class="menu-items">
-                <li><a href="/myapp">Главная страница</a></li>
+                <li><a href="/">Главная страница</a></li>
                 <li><a href="catalog">Продукция</a></li>
                 <li><a href="podcats">Подкасты</a></li>
                 <li><a href="articles">Статьи</a></li>
@@ -229,17 +260,18 @@
                     var formData = new FormData(form); 
                    
                     $.ajax({ 
-                        url: 'http://127.0.0.1:8000/web_app/surv_result', 
+                        url: 'surv_result', 
                         method: 'POST', 
                         data: formData, 
                         processData: false, 
                         contentType: false, 
                         success: function (response) {                       
-                            alert('Your form has been sent successfully.'); 
+            
+                            var jresponse = JSON.parse(response);
+                            showDivWithForm(jresponse.capt,jresponse.text)
                         }, 
                         error: function (xhr, status, error) {                        
-                            alert('Your form was not sent successfully.'); 
-                            console.error(error); 
+                            showDivWithForm("Error",error)
                         } 
                     }); 
                 }); 
@@ -248,4 +280,31 @@
 
 
     </section>
+
+
+    <!-------------------------------------------------------------------------------------------------------------------------------
+        Скрытие DIVы  display ="none", которые будут показаны в модальном режиме, стили из modal.css и из inputs.css   
+    ------------------------------------------------------------------------------------------------------------------------------->
+
+
+    <!-------------------------------------------------------------------------------------------------------------------------------
+        Скрытий DIV  для показа результата сохранения   
+    ----------->
+
+    <div id="divModalUser" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content overcolor">
+            <span class="close" onclick="onclickSpanToHideCurentDiv('divModalUser')" >&times;</span>
+            <h4 id="mcapt"></h4>
+            <br/>
+            <span id="mtext"></span>
+            <br/>
+            
+            <!--a class="button-dark button-dark_invert" style="font-size: 8px;" href="javascript:void(0);" onclick="onclickSpanToHideCurentDiv('divModalUser')">
+                Закрыть</a-->
+        </div>
+
+    </div>
+
 </body>
