@@ -11,9 +11,9 @@
     <link rel="stylesheet" href="{% static "assets/inputs.css" %}">
     <link rel="stylesheet" href="{% static "assets/survey.css" %}">
 
-    <script>
-
-    </script>
+    <script src= 
+    "{% static "js/jquery.min.js" %}"> 
+        </script> 
 
 </head>
 
@@ -49,7 +49,7 @@
        Секция с формой, стили из survay.css и inputs.css
     ------------------------------------------------------------------------------------------------------------------------------->
     <section class="sectionblock">
-        <form id="survform" class="surv_form" action="stub.html">
+        <form id="survform" class="surv_form" >
 
             <!----------------------------------->
             <div class="inputdecoration survdecoration">
@@ -220,5 +220,32 @@
                 Отправить
             </button>
         </form>
+
+        <script> 
+            $(document).ready(function () {                 
+                $('#survform').submit(function (event) { 
+                    event.preventDefault();                 
+                    var form = document.getElementById('survform'); 
+                    var formData = new FormData(form); 
+                   
+                    $.ajax({ 
+                        url: 'http://127.0.0.1:8000/web_app/surv_result', 
+                        method: 'POST', 
+                        data: formData, 
+                        processData: false, 
+                        contentType: false, 
+                        success: function (response) {                       
+                            alert('Your form has been sent successfully.'); 
+                        }, 
+                        error: function (xhr, status, error) {                        
+                            alert('Your form was not sent successfully.'); 
+                            console.error(error); 
+                        } 
+                    }); 
+                }); 
+            }); 
+        </script> 
+
+
     </section>
 </body>

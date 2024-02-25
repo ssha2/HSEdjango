@@ -24,5 +24,14 @@ def calc(request):
     return render(request, "calc.html")
 
 def surv_result(request):
-    #surv_result
+
+    # is_ajax = request.headers.get('X-Requested-With') == 'XMLHttpRequest'
+
+    # if is_ajax:
+    #     if request.method == 'GET':
+    #         todos = list(Todo.objects.all().values())
+    #         return JsonResponse({'context': todos})
+    #     return JsonResponse({'status': 'Invalid request'}, status=400)
+    # else:
+    #     return HttpResponseBadRequest('Invalid request')
     return render(request, "calc.html")
