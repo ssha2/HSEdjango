@@ -1,6 +1,7 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse,HttpRequest
 
+from .survey import Survey
 
 def index(request):
     return render(request, "index.html")
@@ -25,8 +26,7 @@ def calc(request):
 
 def surv_result(request):
 
-    # is_ajax = request.headers.get('X-Requested-With') == 'XMLHttpRequest'
-
+    survey = Survey(request.POST)
     # if is_ajax:
     #     if request.method == 'GET':
     #         todos = list(Todo.objects.all().values())
@@ -34,4 +34,4 @@ def surv_result(request):
     #     return JsonResponse({'status': 'Invalid request'}, status=400)
     # else:
     #     return HttpResponseBadRequest('Invalid request')
-    return render(request, "calc.html")
+    return HttpResponse(survey.frequency)
