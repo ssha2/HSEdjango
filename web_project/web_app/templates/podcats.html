@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Мой проект:Спортивное питание</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static "assets/general.css" %}">
+    <link rel="stylesheet" href="{% static "assets/navigate.css" %}">
+    <link rel="stylesheet" href="{% static "assets/flexbox.css" %}">
+    <link rel="stylesheet" href="{% static "assets/modal.css" %}">
+    <link rel="stylesheet" href="{% static "assets/inputs.css" %}">
+    <link rel="stylesheet" href="{% static "assets/tablewithbg.css" %}">
+    <link rel="stylesheet" href="{% static "assets/podcast.css" %}">
+
+ 
+    <script name="for_modlas">
+
+
+
+        /*
+         показываем модальный div c большой картинкой
+        */ 
+        function showDivWithExpandImage(imgElemFromCatalog)
+        {
+
+            document.getElementById("imageBig").src = imgElemFromCatalog.src;
+            document.getElementById("divModalImage").style.display = "block";
+        }
+
+        /*
+          скрываем div по его ID
+        */ 
+        function onclickSpanToHideCurentDiv(visibled_divID)
+        {
+            document.getElementById(visibled_divID).style.display = "none";
+        }
+
+
+
+        /*
+         показываем модальный div c формой регистарации 
+        */ 
+        function showDivWithForm()
+        {
+            document.getElementById("divModalUser").style.display = "block";
+        }
+
+
+        
+        /*
+         отправляем форму регистарации 
+        */ 
+        function submitForm()
+        {
+            //текущая дата
+            const today = new Date(Date.now());
+            // устанавливаем для hidden элеимента
+            document.getElementById('data').value = today.toLocaleDateString();
+            document.getElementById("formForUserReg").submit();
+            // скрываем форму
+            document.getElementById("divModalImage").style.display = "block";
+        }
+
+
+
+    </script>
+
+</head>
+
+<body onload="">
+
+    <!-------------------------------------------------------------------------------------------------------------------------------
+        Наивгационное меню состоящие из элеиентов списка, основные стили в navigate.css, general.css
+    ------------------------------------------------------------------------------------------------------------------------------->
+    <nav class="fixed-nav-bar">
+        <div id="menu" class="menu">
+            <ul class="menu-items">
+                <li><a href="/myapp">Главная страница</a></li>
+                <li><a href="catalog">Продукция</a></li>
+                <li class="screen-link-active"><a href="podcats">Подкасты</a></li>
+                <li><a href="articles">Статьи</a></li>
+                <li><a href="surv">Анкета</a></li>
+                 <li class="other_menu"><a href="http://sportwiki.to/%D0%9A%D0%B0%D1%82%D0%B5%D0%B3%D0%BE%D1%80%D0%B8%D1%8F:%D0%9F%D0%B8%D1%82%D0%B0%D0%BD%D0%B8%D0%B5_%D0%B8_%D0%B4%D0%B8%D0%B5%D1%82%D1%8B"
+                        target="_blank">SportWiki</a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+     <!-------------------------------------------------------------------------------------------------------------------------------
+        Пустая секция чтобы отсупить от верхнего края страниц и не быть перекрытым fixed-nav-bar c большим zindex
+    ------------------------------------------------------------------------------------------------------------------------------->
+    <section class="contentempy">
+
+    </section>
+    <!-------------------------------------------------------------------------------------------------------------------------------
+        Секция меню PODCAST, основные стили в podcat.css
+    ------------------------------------------------------------------------------------------------------------------------------->
+
+    <section class="sectionblock" id="sec_podcast">
+        <h1><a name="podcast" />Подкасты</h1>
+        <div class="podcast">
+            <a
+                href="hhttps://podcasts.google.com/feed/aHR0cDovL21pbmRwdW1wLmxpYnN5bi5jb20vcnNz?sa=X&ved=0CAMQ4aUDahcKEwiQ2cOe4-z7AhUAAAAAHQAAAAAQAQ"
+                target="_blank">
+                <span>Mind Pump: Raw Fitness Truth</span>
+            </a>
+            <p> <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQArctAkhD4e1-5Mu2DYv06xSgoqaVFcMX8Cvh96Amp1t1F_YQ">
+                MindPump exposes the RAW TRUTH about health, fitness, nutrition and more... Hosts Sal Di Stefano, Adam
+                Schafer & Justin Andrews pull back the curtain on the mythology, snake oil and pseudo-science that
+                pervades the fitness industry and present science-backed solutions that result in increased muscular
+                development and performance while simultaneously emphasizing health. No fitness institution or fitness
+                "truth" is safe from their quick wit and over 40 years of combined ...</p>
+        </div>
+
+        <div class="podcast">
+            <a
+                href="https://podcasts.google.com/feed/aHR0cHM6Ly9mZWVkLnBvZGJlYW4uY29tL2VlaW5iYi9mZWVkLnhtbA?sa=X&ved=0CBoQ27cFahgKEwiI_ZaB4ez7AhUAAAAAHQAAAAAQqwE"
+                target="_blank">
+                <span>Everything Else In Bodybuilding</span>
+            </a>
+            <p><img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTEiRKcWHA4-upS7KhbhHm6k3fZf0Iyb13FapFDwuVWhzXX16Q">Most
+                people discover bodybuilding for the first time by word of mouth. Many competitors often make
+                preventable mistakes from working with unqualified coaches, listening to industry bias, and following
+                the crowd with the latest industry trends. How about the taboo topics that get swept under the rug and
+                the people who suffer in silence too? To add to the confusion there are many federations and many
+                divisions to choose from and they are all different. It’s time to remove the veil and consolidate all
+                the info on the entire industry into one ...</p>
+        </div>
+
+        <div class="podcast">
+            <a
+                href="https://podcasts.google.com/feed/aHR0cHM6Ly9mZWVkcy5zb3VuZGNsb3VkLmNvbS91c2Vycy9zb3VuZGNsb3VkOnVzZXJzOjI0NjU1MTU0MS9zb3VuZHMucnNz?sa=X&ved=0CAMQ4aUDahcKEwiwyca-4-z7AhUAAAAAHQAAAAAQAQ"
+                target="_blank">
+                <span>The Revive Stronger Podcast</span>
+            </a>
+            <p><img
+                    src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTzQ_3OSsIFxWINfxnWTWL1k3PbxfKxXlp-2jhFGpyUblQki7k">Welcome
+                to the Revive Stronger Podcast your go-to podcast when it comes to evidence-based practices. Together we
+                delve deep into everything related to training, nutrition, bodybuilding and much more. Talking to the
+                brightest minds in the fitness industry, elite coaches, top tier athletes and dispensing world-clas ...
+            </p>
+        </div>
+
+        <div class="podcast">
+            <a
+                href="https://podcasts.google.com/feed/aHR0cHM6Ly9mZWVkcy5zb3VuZGNsb3VkLmNvbS91c2Vycy9zb3VuZGNsb3VkOnVzZXJzOjIwOTk0MDk4L3NvdW5kcy5yc3M?sa=X&ved=0CAMQ4aUDahcKEwjIrMfA4-z7AhUAAAAAHQAAAAAQAQ"
+                target="_blank">
+                <span>Real Bodybuilding Podcast</span>
+            </a>
+            <p><img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqHAEJd1w2LM-5GHOuTyZBn09YV8z62QI0-j1hbrTtAx4aOYpP">The
+                Real Bodybuilding Podcast is meant to be the bridge between the fan and the athlete. RBP allows people
+                to get to know their favourite athletes on a deeper level than just their competitive prowess. Who are
+                they? What do they like to do outside of bodybuilding? What's their sense of humour like? RBP also
+                touches on current news in the bodybuilding world, covers bodybuilding shows with various ...
+            </p>
+        </div>
+
+        <div class="podcast">
+            <a
+                href="https://podcasts.google.com/feed/aHR0cHM6Ly9nYWdsaW9uZXN0cmVuZ3RoLmxpYnN5bi5jb20vcnNz?sa=X&ved=0CAMQ4aUDahcKEwjAlve84-z7AhUAAAAAHQAAAAAQAQ"
+                target="_blank">
+                <span>Powerlifting For The People by Gaglione Strength</span>
+            </a>
+            <p><img
+                    src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcS2OQRhN97C_nceTPu78lJBUi2yktH-p-2ay9PTzgq4zIUhPuI">Powerlifting
+                has been a sport that many have attributed big out of shape meatheads who are only interested in pushing
+                big weights around, until now. This podcast hosted by coach John Gaglione shows how powerlifting is much
+                more than just pushing heavy weights and how it can help you reach your desired health and fitness goals
+                despite your age, your gender, or previous training background ...
+            </p>
+        </div>
+    </section>
+
+
+
+
+
+
+
+</body>
+
+</html>

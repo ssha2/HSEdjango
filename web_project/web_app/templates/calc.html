@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Мой проект:Рассчитай каллории</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static "assets/general.css" %}">
+    <link rel="stylesheet" href="{% static "assets/navigate.css" %}">
+    <link rel="stylesheet" href="{% static "assets/calc.css" %}">
+    <link rel="stylesheet" href="{% static "assets/inputs.css" %}">
+
+    <script>
+
+
+
+
+        /*
+        
+
+for (
+i=0;
+i<5-1;
+i++
+)
+i=0;0<5-1; -> do 0
+i++;1<5-1; -> do 1
+i++;2<5-1; -> do 2
+i++;3<5-1; -> do 3
+i++;4<5-1; -> exit
+
+for1 ()
+{
+ break1
+}
+next afetr break1
+
+
+
+for1 ()
+{
+	что-то тут;
+	что-то тут;
+
+	for2 ()
+	{
+		что-то тут;
+		break1;
+		что-то здеся;
+		if ()
+		{
+		  break1;	
+		}
+	 	
+	}
+
+	что-то тут; (next afetr break1)
+}
+
+
+
+functuin fun()
+for1 ()
+{
+	что-то тут;
+	что-то тут;
+
+	for2 ()
+	{
+		что-то тут;
+		break1;
+		что-то здеся;
+		if ()
+		{
+		  return --- выход из всего и функции
+		}
+	 	
+	}
+
+	что-то тут; (next afetr break1)
+}
+
+
+
+        */
+
+       /*
+       проверка начисло
+        */
+        function isitNumber(testValue)
+        {
+            /*
+                Number это все целые или числа с фиксированной точкой
+                наример 9, 123.90 и тп
+                Числа с плавающей точко это например П 3.14.......... или деление 10/3, там гдечто-то после точки не фиксировано бесконечно - в периоде 
+            */
+            if (isFinite(testValue)) //являетя числом типо number  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number
+            {
+                return true;
+            }
+            else 
+            { //  может быть это число с плавающей точкой
+
+                var NaNOrFloat=parseFloat(testValue) ;// возвращает число c плавающей точкой  или NaN если не получилось конвертуть //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseFloat
+
+                if (!isNaN( //проверка что после parsefloat вернулось число а на NaN, то есть !isNaM = true 
+                        NaNOrFloat
+                  ))
+                  {
+                    return true;
+                  }
+                  else{
+                    alert("должно быть число вместо:" + testValue);
+                    return false;
+                  }
+            }
+        }
+
+
+
+
+        /*
+        вставляем новую строку в таблицу
+        */
+        function addNewRow()
+        {
+
+            /*
+            https://ru.wikipedia.org/wiki/Document_Object_Model
+
+            структура dom объекта table тут ->  table.rows[].cells[].children[]
+            */
+            var table = document.getElementById("mytable");
+            // новая строка куда будем добавлять значения
+            var destination_row = table.insertRow(table.rows.length - 1);
+            // срока с добавляемыми данными 
+            var inpurts_row = document.getElementById("rowWithInputs");
+
+            //пять ячеек со значениями
+            for (i = 0; i < 5; i++) 
+            {
+                //новая ячейка добавленная в i-ую колонку новой строки 
+                var destination_cell=destination_row.insertCell(i);
+                var source_cell =inpurts_row.cells[i];
+                // вложен будет всегда один элемент
+                var inputElement = source_cell.children[0];
+                // прежде всего проверим что там число, кроме первой ячейки с названием продукта
+                if (i != 0)
+                {
+                    if (!isitNumber(inputElement.value))// isitNumber вернула false,вместе с !false=true то там не число
+                    {
+                        //удаляем то что только что добавили
+                        table.deleteRow(destination_row.rowIndex);
+                        //  выходим из всего из addNewRow целиком
+                        return; // если использовать break то код прожолжить выполняться с этого **А** места    
+                        
+
+                    }
+                }
+                // переносим значение
+                destination_cell.innerHTML = inputElement.value;
+                inputElement.value = "";
+            }
+            //**А**
+
+            // создаем кнопку с уделением
+            var new_button = document.createElement("button");
+            new_button.innerHTML = "Удалить";
+            new_button.className = "inlinebutton inlinebutton_invert";
+            // событие онклик
+            new_button.addEventListener("click", deleteRow, false);
+            // вставляем в посленюю ячейку строки
+            destination_row.insertCell(5).appendChild(new_button);
+        }
+
+
+        /*
+        Удаляем строку
+        */
+
+        function deleteRow()
+        {
+            //глобальный объект event есть при каждом собысии
+            // тут событие click на элементе который в target
+            // button вложен в cell , cell вложен в row 
+            // target = button
+            var button=event.target;
+            document.getElementById("mytable").deleteRow(
+                button.parentElement.parentElement.rowIndex);
+        }
+
+        /*
+        Расчет
+
+        */
+        function totalCalculation()
+        {
+            const kKalFat=9;// ккал в жире
+            const kKalOthers=4 // остальном
+            var table = document.getElementById("mytable");
+            // В какиех единицах считать
+            var is_kcal = document.getElementById("kcal").checked;
+            var table_rowcunt = table.rows.length;
+
+            let totalCalculationSum = 0;
+
+            // цикл   со второй строки с индексом=1 (минуя заголовок) по предпоследнюю  строку с индексом = колво-строк-2 (не учитывая последгюю строку)
+            // индекс в javascript всегда с 0, 0 это первый элемен, а колво_элементов-1 это последний 
+            for (i = 1; i < table_rowcunt - 1; i++) {
+
+                // считаем сумму в цикле
+                totalCalculationSum = totalCalculationSum + 
+                (
+                   (
+                     table.rows[i].cells[1].innerText * kKalOthers //значение во сторой ячейки строки Угдеводы
+                    + table.rows[i].cells[2].innerText * kKalFat // Жиры
+                    + table.rows[i].cells[3].innerText * kKalOthers // Белки 
+                   ) // каллорий в 100 грамм 
+                  * table.rows[i].cells[4].innerText / 100 //вес приведенный к 100 грамм
+                );  
+            }
+
+            // Округдение и перевод в кдж если не выбраны ккал
+            totalCalculationSum = Math.round(totalCalculationSum * (is_kcal ? 1 : 4.184));
+
+            //вывод
+            document.getElementById("res").innerText = totalCalculationSum + (is_kcal ? " кКал" : " кДж");
+        }
+
+    </script>
+
+</head>
+
+<body>
+
+    <!-------------------------------------------------------------------------------------------------------------------------------
+        Наивгационное меню  основные стили в navigate.css, general.css
+    ------------------------------------------------------------------------------------------------------------------------------->
+    <nav class="fixed-nav-bar">
+        <a href="/myapp">&nbsp;&nbsp;&lt;&lt;Назад</a>
+    </nav>
+
+     <!-------------------------------------------------------------------------------------------------------------------------------
+        Пустая секция чтобы отсупить от верхнего края страниц и не быть перекрытым fixed-nav-bar c большим zindex
+    ------------------------------------------------------------------------------------------------------------------------------->
+    <section class="contentempy">
+
+    </section>
+
+    <!-------------------------------------------------------------------------------------------------------------------------------
+       Секция с таблицей, стили из calc.css
+    ------------------------------------------------------------------------------------------------------------------------------->
+    <section class="sectionblock">
+
+        <div>
+            <table id="mytable">
+                <tr>
+                    <th class="th_main">Продук</th>
+                    <th class="th_ext">Углевод (100г)</th>
+                    <th class="th_ext">Жир(100г)</th>
+                    <th class="th_ext">Белок(100г)</th>
+                    <th class="th_ext">Вес (г)</th>
+                    <th></th>
+                </tr>
+                <tr id="rowWithInputs" class="inputdecoration">
+                    <td><input type="text" /></td>
+                    <td><input type="text" /></td>
+                    <td><input type="text" /></td>
+                    <td><input type="text" /></td>
+                    <td><input type="text" /></td>
+                    <td>
+                        <button class="inlinebutton" onclick="addNewRow();">Добавить</button>
+                    </td>
+                </tr>
+            </table>
+            <br />
+            <input type="radio" name="metrics" id="kcal" name="kcal" value="kcal" value="" checked />
+            <label for="kcal">кКал</label>
+            <input type="radio" name="metrics" id="kdj" name="kdj" value="kdj" />
+            <label for="kdj">кДж</label><br>
+            <a class="button-dark button-dark_invert" href="javascript:void(0);" onclick="totalCalculation()">Рассчитать</a>
+            <strong>Результат: <span id="res"></span></strong>
+        </div>
+    </section>
+</body>

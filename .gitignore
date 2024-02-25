@@ -1,0 +1,5 @@
+/.venv 
+/web_project/web_app/__pycache__
+/web_project/web_app/migrations/__pycache__
+/web_project/web_project/__pycache__
+/web_project/web_project/migrations/__pycache__

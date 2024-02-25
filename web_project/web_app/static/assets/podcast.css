@@ -1,0 +1,33 @@
+.podcast {
+    border: 1px solid #777;
+    border-radius: 10px;
+    margin: 50px auto;
+    padding: 30px 20px;
+    box-shadow: 2px 5px 10px rgba(119, 119, 119, 0.405);
+}
+
+.podcast img {
+    width:50px;height:50px;
+    float:left; 
+     margin: 7px 7px 7px 0; 
+   }
+  
+
+  
+.podcast span {
+    display:block;
+    font-size: 120%;
+    font-weight: bold;
+  }
+
+.podcast a:visited {
+    color: #2e2e2e;
+  }
+
+.podcast p
+{
+
+    font-size: 70%;
+
+}  
+

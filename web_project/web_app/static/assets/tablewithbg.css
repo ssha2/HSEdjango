@@ -1,0 +1,19 @@
+/*
+Для таблички с backgroud на index
+*/
+
+
+.articletable 
+{ 
+  
+    text-align:left;
+    /*opacity: 0.5;*/ 
+    background-image:url('arni-alfa-tr.png');
+    background-repeat: no-repeat;
+    background-position: center top;
+    color: rgba(0, 0, 0, 0.901);
+    
+}
+
+
+

@@ -1,0 +1,188 @@
+/*
+Общтй для всех в основном кнопочки цвета и тп
+*/
+
+
+/* WEB FONT */
+@import url(http://fonts.googleapis.com/css?family=Signika:600|Varela+Round);
+
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+/*SET CALCULATED WITH PADDING */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+/* BASIC */
+body {
+  font: normal 18px/22px "Varela Round", sans-serif;
+  background-color: #e9ffff;
+  color: #2e2e2e;
+}
+h1,h2,h3 {
+  font-family: "Signika", sans-serif;
+  font-weight: 600;
+}
+h1 {
+  font-size: 36px;
+  line-height: 46px;
+  color: #e0e0e0;
+}
+h2 {
+  font-size: 32px;
+  line-height: 33px;
+  margin-bottom: 5px;
+  margin-top: 10px;
+}
+h3 {
+  font-size: 20px;
+  line-height: 33px;
+  margin-bottom: 5px;
+  margin-top: 10px;
+}
+p {
+  margin: 20px 0;
+}
+
+a:link,a:visited,a:hover, a:active {
+  text-decoration: none;
+}
+
+/* ФИКСИРОВАННЫЙ БАР И ШАПКА */
+.fixed-nav-bar {
+  box-shadow: 0px 0px 3px 0px rgba(50, 50, 50, 0.6);
+}
+
+.content {
+  position: relative;
+  background: #464646 url(amino.png) no-repeat center;
+  background-size: cover;
+}
+
+.contentempy {
+    position: relative;
+    background-color: #464646 ;
+  }
+
+.description,.sectionblock {
+  width: 90%;
+  max-width: 960px;
+  margin: 0 auto;
+}
+.description {
+  padding-top: 50px;
+  min-height: 250px;
+  text-align: center;
+}
+.sectionblock {
+  color: #747474;
+}
+
+
+.sectionblock h1 {
+  color: #384e56;
+  margin-top: 60px;
+  text-transform: uppercase;
+}
+.sectionblock h2 a:link,
+.sectionblock h2 a:visited {
+  color: #384e56;
+  transition: color 0.1s ease;
+}
+
+.contentslist a,a:visited {
+    color: #384e56;
+  }
+.contentslist li
+{
+    padding-left: 20px;
+}
+.contentslist li
+{
+    margin-left: 20px;
+      
+}
+
+.sectionblock h2 a:hover {
+  color: #000000;
+  transition: color 0.3s ease;
+}
+
+.summary {
+  color: #d9dee2;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+
+/* стили кнопок <a> и <button>  */
+
+.button, .button:visited, .button-dark {
+  display: inline-block;
+  max-width: 200px;
+  margin: 50px 10px 30px 10px;
+  padding: 10px;
+  font-family: "Signika", sans-serif;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  border-radius: 3px;
+  text-transform: capitalize;
+  text-align: center;
+  transition: all 0.1s ease;
+  font-size: 16px;
+}
+
+.button-dark, .button-dark:visited {
+  margin: 20px 10px 30px 0;
+  color: #464646;
+  border-color: #464646;
+  background-color: transparent;
+}
+
+.button {
+  background-color: rgba(70, 70, 70, 0.9);
+  opacity: 0.8;
+  width: 190px;
+}
+
+.button:hover, .button-dark:hover {
+  transition: background-colo 0.3s ease;
+}
+.button:hover {
+  background-color: #03453b;
+  color: #e0e0e0;
+}
+.button-dark:hover {
+  background-color: #03453b;
+  color: #e0e0e0;
+}
+.button-dark_invert
+{
+  background-color: #03453b;
+  color: #e0e0e0;
+}
+.inlinebutton
+{
+  display: inline-block;
+  margin-left:15px;
+  margin-right:15px;
+  padding: 5px;
+  font-family:  "Signika",sans-serif;
+  font-size: 14px;
+  background-color: #03453b;
+  color: #ffffff;
+  border: 1px solid #03241f;
+  border-radius: 4px;
+  text-align: center;
+  cursor: pointer;
+}
+.inlinebutton_invert
+{
+  background-color: #9d423e;
+}
+
+
+

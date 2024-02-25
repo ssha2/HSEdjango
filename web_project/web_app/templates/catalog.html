@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Мой проект:Спортивное питание</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static "assets/general.css" %}">
+    <link rel="stylesheet" href="{% static "assets/navigate.css" %}">
+    <link rel="stylesheet" href="{% static "assets/flexbox.css" %}">
+    <link rel="stylesheet" href="{% static "assets/modal.css" %}">
+    <link rel="stylesheet" href="{% static "assets/inputs.css" %}">
+    <link rel="stylesheet" href="{% static "assets/tablewithbg.css" %}">
+    <link rel="stylesheet" href="{% static "assets/podcast.css" %}">
+
+ 
+    <script name="for_modlas">
+
+
+
+        /*
+         показываем модальный div c большой картинкой
+        */ 
+        function showDivWithExpandImage(imgElemFromCatalog)
+        {
+
+            document.getElementById("imageBig").src = imgElemFromCatalog.src;
+            document.getElementById("divModalImage").style.display = "block";
+        }
+
+        /*
+          скрываем div по его ID
+        */ 
+        function onclickSpanToHideCurentDiv(visibled_divID)
+        {
+            document.getElementById(visibled_divID).style.display = "none";
+        }
+
+
+
+
+
+    </script>
+
+</head>
+
+<body onload="">
+
+    <!-------------------------------------------------------------------------------------------------------------------------------
+        Наивгационное меню состоящие из элеиентов списка, основные стили в navigate.css, general.css
+    ------------------------------------------------------------------------------------------------------------------------------->
+    <nav class="fixed-nav-bar">
+        <div id="menu" class="menu">
+            <ul class="menu-items">
+                <li><a href="/myapp">Главная страница</a></li>
+                <li class="screen-link-active"><a href="catalog">Продукция</a></li>
+                <li><a href="podcats">Подкасты</a></li>
+                <li><a href="articles">Статьи</a></li>
+                <li><a href="surv">Анкета</a></li>
+                 <li class="other_menu"><a href="http://sportwiki.to/%D0%9A%D0%B0%D1%82%D0%B5%D0%B3%D0%BE%D1%80%D0%B8%D1%8F:%D0%9F%D0%B8%D1%82%D0%B0%D0%BD%D0%B8%D0%B5_%D0%B8_%D0%B4%D0%B8%D0%B5%D1%82%D1%8B"
+                        target="_blank">SportWiki</a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+     <!-------------------------------------------------------------------------------------------------------------------------------
+        Пустая секция чтобы отсупить от верхнего края страниц и не быть перекрытым fixed-nav-bar c большим zindex
+    ------------------------------------------------------------------------------------------------------------------------------->
+    <section class="contentempy">
+
+    </section>
+    
+    <!-------------------------------------------------------------------------------------------------------------------------------
+        Секция меню CATALOG, основные стили в flexbox.css
+    ------------------------------------------------------------------------------------------------------------------------------->
+    
+    <section class="sectionblock" id="sec_catalog">
+        <h1>Пример спортивного питания на рынке</h1>
+        <div class="centered">
+            <!-- собственно начало верски flexbox  -->
+            <section class="cards">
+
+                <article class="card">
+                    <picture class="tooltip">
+                        <span class="tooltipspan"><a href="https://www.google.com/search?q=primecraft+products"
+                                target="_blank""><img src=" assets/loupe-icon-g.png" alt="google"
+                                style="width:30px;height:30px;"></a>
+                        </span>
+
+                        <img onclick="showDivWithExpandImage(this)"
+                            src="https://primekraft.ru/upload/iblock/63f/63f6703325403ddb7046bb09ca0ceaf0.jpg"
+                            alt="изображение продукта">
+                    </picture>
+                    <div class="card-content">
+                        <p>Это протеин тут нужно что-то написать</p>
+                    </div><!-- .card-content -->
+                </article><!-- .card -->
+
+
+                <article class="card">
+                    <picture class="tooltip">
+                        <span class="tooltipspan"><a href="https://www.google.com/search?q=primecraft+products"
+                                target="_blank""><img src=" assets/loupe-icon-g.png" alt="google"></a>
+                        </span>
+                        <img onclick="showDivWithExpandImage(this)"
+                            src="https://primekraft.ru/upload/delight.webpconverter/upload/iblock/74f/74f13df276b51b9e60ef74c283d5d37e.png.webp?164319081337038"
+                            alt="изображение продукта">
+                    </picture>
+                    <div class="card-content">
+                        <p>Это протеин тут нужно что-то написать</p>
+                    </div><!-- .card-content -->
+                </article><!-- .card -->
+
+
+
+                <article class="card">
+                    <picture class="tooltip">
+                        <span class="tooltipspan"><a href="https://www.google.com/search?q=primecraft+products"
+                                target="_blank""><img src=" assets/loupe-icon-g.png" alt="google"></a>
+                        </span>
+                        <img onclick="showDivWithExpandImage(this)"
+                            src="https://primekraft.ru/upload/iblock/061/06198a19fd53d44f109c478dd3680329.png"
+                            alt="изображение продукта">
+                    </picture>
+                    <div class="card-content">
+                        <p>Это протеин тут нужно что-то написать</p>
+                    </div><!-- .card-content -->
+                </article><!-- .card -->
+
+
+                <article class="card">
+                    <picture class="tooltip">
+                        <span class="tooltipspan"><a href="https://www.google.com/search?q=primecraft+products"
+                                target="_blank""><img src=" assets/loupe-icon-g.png" alt="google"></a>
+                        </span>
+                        <img onclick="showDivWithExpandImage(this)"
+                            src="https://primekraft.ru/upload/delight.webpconverter/upload/iblock/941/94126c843ca90ba4ebdd801296d8c603.jpg.webp?164181219717666"
+                            alt="изображение продукта">
+                    </picture>
+                    <div class="card-content">
+                        <p>Это протеин тут нужно что-то написать</p>
+                    </div><!-- .card-content -->
+                </article><!-- .card -->
+
+
+                <article class="card">
+                    <picture class="tooltip">
+                        <span class="tooltipspan"><a href="https://www.google.com/search?q=primecraft+products"
+                                target="_blank""><img src=" assets/loupe-icon-g.png" alt="google"></a>
+                        </span>
+                        <img onclick="showDivWithExpandImage(this)"
+                            src="https://primekraft.ru/upload/iblock/141/uo302q0zrjnla7b3z1qx3o8125fbwxya.jpg"
+                            alt="изображение продукта">
+                    </picture>
+                    <div class="card-content">
+                        <p>Это протеин тут нужно что-то написать</p>
+                    </div><!-- .card-content -->
+                </article><!-- .card -->
+
+
+                <article class="card">
+                    <picture class="tooltip">
+                        <span class="tooltipspan"><a href="https://www.google.com/search?q=primecraft+products"
+                                target="_blank""><img src=" assets/loupe-icon-g.png" alt="google"></a>
+                        </span>
+                        <img onclick="showDivWithExpandImage(this)"
+                            src="https://primekraft.ru/upload/iblock/9a0/em3nmv2xedlamk1u50dwpsg8r3shn4zc.jpg"
+                            alt="изображение продукта">
+                    </picture>
+                    <div class="card-content">
+
+                        <p>Это протеин тут нужно что-то написать</p>
+                    </div><!-- .card-content -->
+                </article><!-- .card -->
+
+                <article class="card">
+
+                    <picture class="tooltip">
+                        <span class="tooltipspan"><a href="https://www.google.com/search?q=primecraft+products"
+                                target="_blank""><img src=" assets/loupe-icon-g.png" alt="google"></a>
+                        </span>
+                        <img onclick="showDivWithExpandImage(this)"
+                            src="https://primekraft.ru/upload/iblock/2ab/2abecded2a36b7d0762f604fb5dc9082.png"
+                            alt="изображение продукта">
+                    </picture>
+                    <div class="card-content">
+                        <p>Это протеин тут нужно что-то написать</p>
+                    </div>
+                </article><!-- .card -->
+
+                <article class="card">
+                    <picture class="tooltip">
+                        <span class="tooltipspan"><a href="https://www.google.com/search?q=mutant+protein+products"
+                                target="_blank""><img src=" assets/loupe-icon-g.png" alt="google"></a>
+                        </span>
+                        <img onclick="showDivWithExpandImage(this)"
+                            src="https://cdn.shopify.com/s/files/1/0594/1913/2096/products/339_VitaD60Gel-940x1018_ef81ea4d-fb13-4965-a058-354e8ae0137a_720x.png?v=1631243954"
+                            alt="изображение продукта">
+                    </picture>
+
+                    <div class="card-content">
+                        <p>Это протеин тут нужно что-то написать</p>
+                    </div>
+                </article>
+
+
+                <article class="card">
+
+                    <picture class="tooltip">
+                        <span class="tooltipspan"><a href="https://www.google.com/search?q=mutant+protein+products"
+                                target="_blank""><img src=" assets/loupe-icon-g.png" alt="google"></a>
+                        </span>
+                        <img onclick="showDivWithExpandImage(this)"
+                            src="https://cdn.shopify.com/s/files/1/0080/8740/4641/products/32451US_MUTANT_FLEX_FOOD_Vanilla_Cupcake_flavor_1.94_LB_31_oz_880_g_v1.01-left-MS_540x.jpg?v=1652116312"
+                            alt="изображение продукта">
+                    </picture>
+                    <div class="card-content">
+                        <p>Это протеин тут нужно что-то написать</p>
+                    </div>
+
+                </article>
+
+
+                <article class="card">
+                    <picture class="tooltip">
+                        <span class="tooltipspan"><a href="https://www.google.com/search?q=mutant+protein+products"
+                                target="_blank""><img src=" assets/loupe-icon-g.png" alt="google"></a>
+                        </span>
+                        <img onclick="showDivWithExpandImage(this)"
+                            src="https://cdn.shopify.com/s/files/1/0080/8740/4641/products/35303US_MUTANT_PRO_Cookies_N_Cream_Flavor_2_LB_908_G_v1.00-MS_540x.jpg?v=1658179154"
+                            alt="изображение продукта">
+                    </picture>
+                    <div class="card-content">
+                        <p>Это протеин тут нужно что-то написать</p>
+                    </div><!-- .card-content -->
+                </article><!-- .card -->
+
+
+                <article class="card">
+                    <picture class="tooltip">
+                        <span class="tooltipspan"><a href="https://www.google.com/search?q=mutant+protein+products"
+                                target="_blank""><img src=" assets/loupe-icon-g.png" alt="google"></a>
+                        </span>
+                        <img onclick="showDivWithExpandImage(this)"
+                            src="https://cdn.shopify.com/s/files/1/0080/8740/4641/products/32602USMUTANTFLEXFOODChocolateBrownieflavor270g_45gx6SS_DisplayerBoxv1.01-Left-Open-MS_540x.jpg?v=1652304574"
+                            alt="изображение продукта">
+                    </picture>
+                    <div class="card-content">
+                        <p>Это протеин тут нужно что-то написать</p>
+                    </div><!-- .card-content -->
+                </article><!-- .card -->
+
+
+                <article class="card">
+                    <picture class="tooltip">
+                        <span class="tooltipspan"><a
+                                href="https://www.google.com/search?q=ultimate+nutrition+protein+products"
+                                target="_blank""><img src=" assets/loupe-icon-g.png" alt="google"></a>
+                        </span>
+                        <img onclick="showDivWithExpandImage(this)"
+                            src="https://cdn.shopify.com/s/files/1/0080/8740/4641/products/33015UXMUTANTBCAA9.7RocketPopFlavor360g_12.7oz_v1.00-MS_540x.jpg?v=1656694979"
+                            alt="изображение продукта">
+                    </picture>
+                    <div class="card-content">
+                        <p>Это протеин тут нужно что-то написать</p>
+                    </div><!-- .card-content -->
+                </article><!-- .card -->
+
+
+                <article class="card">
+                    <picture class="tooltip">
+                        <span class="tooltipspan"><a
+                                href="https://www.google.com/search?q=ultimate+nutrition+protein+product"
+                                target="_blank""><img src=" assets/loupe-icon-g.png" alt="google"></a>
+                        </span>
+                        <img onclick="showDivWithExpandImage(this)"
+                            src="https://cdn.shopify.com/s/files/1/0594/1913/2096/products/00042_Balance30Cap-940X1018_720x.png?v=1631243926"
+                            alt="изображение продукта">
+                    </picture>
+                    <div class="card-content">
+                        <p>Это протеин тут нужно что-то написать</p>
+                    </div><!-- .card-content -->
+                </article><!-- .card -->
+
+
+                <article class="card">
+                    <picture class="tooltip">
+                        <span class="tooltipspan"><a
+                                href="https://www.google.com/search?q=ultimate+nutrition+protein+product"
+                                target="_blank""><img src=" assets/loupe-icon-g.png" alt="google"></a>
+                        </span>
+                        <img onclick="showDivWithExpandImage(this)"
+                            src="https://cdn.shopify.com/s/files/1/0594/1913/2096/products/98146_CleanWhey31gChoc-940x1018_720x.png?v=1631243902"
+                            alt="изображение продукта">
+                    </picture>
+                    <div class="card-content">
+                        <p>Это протеин тут нужно что-то написать</p>
+                    </div><!-- .card-content -->
+                </article><!-- .card -->
+
+
+                <article class="card">
+                    <picture class="tooltip">
+                        <span class="tooltipspan"><a
+                                href="https://www.google.com/search?q=ultimate+nutrition+protein+product"
+                                target="_blank""><img src=" assets/loupe-icon-g.png" alt="google"></a>
+                        </span>
+                        <img onclick="showDivWithExpandImage(this)"
+                            src="https://cdn.shopify.com/s/files/1/0594/1913/2096/products/582_HPX225gPL-940x1018_720x.png?v=1631244189"
+                            alt="изображение продукта">
+                    </picture>
+                    <div class="card-content">
+                        <p>Это протеин тут нужно что-то написать</p>
+                    </div><!-- .card-content -->
+                </article><!-- .card -->
+
+
+
+                <article class="card">
+                    <picture class="tooltip">
+                        <span class="tooltipspan"><a
+                                href="https://www.google.com/search?q=ultimate+nutrition+protein+products"
+                                target="_blank""><img src=" assets/loupe-icon-g.png" alt="google"></a>
+                        </span>
+                        <img onclick="showDivWithExpandImage(this)"
+                            src="https://cdn.shopify.com/s/files/1/0594/1913/2096/products/283_ISO93910gCafe-940x1018_cd1bf91d-ca03-476f-84b9-b4d3c9c04b8e_720x.png?v=1631244085"
+                            alt="изображение продукта">
+                    </picture>
+                    <div class="card-content">
+                        <p>Это протеин тут нужно что-то написать</p>
+                    </div><!-- .card-content -->
+                </article><!-- .card -->
+            </section>
+        </div>
+    </section>
+
+
+
+
+    <!-------------------------------------------------------------------------------------------------------------------------------
+        Скрытие DIVы  display ="none", которые будут показаны в модальном режиме, стили из modal.css и из inputs.css   
+    ------------------------------------------------------------------------------------------------------------------------------->
+
+    <!-------------------------------------------------------------------------------------------------------------------------------
+        Скрытий DIV  для показа увеличенной картинки из секции CATALOG    
+    ------------------------------------------------------------------------------------------------------------------------------->
+    <div id="divModalImage" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close" onclick="onclickSpanToHideCurentDiv('divModalImage')">&times;</span>
+
+            <img id="imageBig"
+                src="TBD NEW URL"
+                alt="A banana that looks like a bird">
+
+        </div>
+
+    </div>
+
+
+    
+
+
+
+</body>
+
+</html>

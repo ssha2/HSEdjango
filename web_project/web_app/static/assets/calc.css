@@ -1,0 +1,28 @@
+/*
+Для страницы калк
+*/
+table {
+  font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+  text-align: left;
+  border-collapse: separate;
+  border-spacing: 5px;
+  background: #cce6d5;
+  color: #656665;
+  border: 16px solid #e3f6ef;
+  border-radius: 20px;
+}
+th {
+  font-size: 18px;
+  padding: 10px;
+}
+td {
+  background: #e3f6ef;
+  padding: 10px;
+  height: 22px;
+}
+table .th_ext {
+  width: 80px;
+}
+table .th_main {
+  width: 350px;
+}

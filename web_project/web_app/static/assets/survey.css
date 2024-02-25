@@ -1,0 +1,44 @@
+/*
+Для страницы анкета
+*/
+.surv_form {
+  max-width: 500px;
+  margin: 10px auto;
+  padding: 10px 10px;
+  box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+
+.survdecoration {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+
+
+.survdecoration select, textarea {
+  border: 1px solid #777;
+  border-radius: 2px;
+  font-family: inherit;
+  padding: 10px;
+  display: block;
+  width: 100%;
+}
+
+.survdecoration select:focus,textarea:focus {
+    color: #212529;
+    background-color: #fff;
+    border-color: #bdbdbd;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(158, 158, 158, 0.25);
+  } 
+
+  button 
+  {
+    cursor: pointer;
+  }
+
+  .b
+  {
+    font-weight: bold;
+  }

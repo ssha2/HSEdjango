@@ -1,0 +1,156 @@
+/*
+Конкретно для карточек flexbox 
+*/
+
+
+@import url('https://fonts.googleapis.com/css?family=Comfortaa|Patua+One');
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    
+   
+ }
+
+ /* last row*/
+.cards::after {
+    content: "";
+    flex: auto;
+  }
+
+
+
+.cards h2 {
+  clear: both;
+  font-family: 'Patua One', serif;
+  letter-spacing: 1px;
+  font-size: 14px;
+  color: #007489;
+}
+
+
+
+.cards img {
+	display: block;
+	border: 0;
+	width: 100%;
+	height: auto;
+    cursor: pointer;
+      
+}
+
+
+.card {
+	margin-bottom: 2em;	
+    background-color:  #ffffff;
+    padding: 3px;
+    border-radius: 15px;
+    border: 1px solid  #e9ffff;
+    max-width: 150px;
+}
+
+
+
+.card-content {
+	padding: 1.4em;
+}
+
+.card-content h2 {
+	margin-top: 0;
+	margin-bottom: .5em;
+	font-weight: bold;
+}
+
+.card-content p {
+	font-size: 60%;
+}
+
+
+.card a {
+	color: black;
+	text-decoration: none;
+}
+
+.card a:hover {
+	box-shadow: 3px 3px 8px hsl(0, 0%, 80%);
+}
+
+
+/* tooltip text */
+.tooltip {
+    position: relative;
+    display: inline-block;
+    
+    font-size: 14px;
+    text-decoration:none;
+  }
+  
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color:#03453b96;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+  
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+  }
+  
+
+  .tooltip:hover .tooltiptext  {
+    visibility: visible;
+  }
+
+  /*tooltip all */
+  .tooltip {
+    text-decoration:none;
+    position:relative;
+  }
+   
+  .tooltip .tooltipspan {
+    display:none;
+    -moz-border-radius:6px;
+    -webkit-border-radius:6px;
+    border-radius:6px;
+    color:black;
+  
+    background: #66bc5e;
+    
+  }
+   
+  .tooltip .tooltipspan img {
+    float:left;
+    margin:0px 0px 0px 0;
+  }
+
+  .tooltip .tooltipspan a {
+    float:left;
+    width:30px;height:30px;
+  }
+   
+  .tooltip:hover .tooltipspan {
+    display:block;
+    position:absolute;
+    top:0;
+    left:0;
+    z-index:100;
+    width:auto;
+    max-width:80px;
+    min-height:36px;
+    border:1px solid #51974a;
+    margin-top:0px;
+    margin-left:0px;
+    overflow:hidden;
+    padding:0px;
+  }
+    
+
+
+
+
+
+

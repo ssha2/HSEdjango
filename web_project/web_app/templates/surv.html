@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+
+{% load static %}<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Мой проект:Анкета</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static "assets/general.css" %}">
+    <link rel="stylesheet" href="{% static "assets/navigate.css" %}">
+    <link rel="stylesheet" href="{% static "assets/inputs.css" %}">
+    <link rel="stylesheet" href="{% static "assets/survey.css" %}">
+
+    <script>
+
+    </script>
+
+</head>
+
+<body>
+
+  
+    <!-------------------------------------------------------------------------------------------------------------------------------
+        Наивгационное меню состоящие из элеиентов списка, основные стили в navigate.css, general.css
+    ------------------------------------------------------------------------------------------------------------------------------->
+    <nav class="fixed-nav-bar">
+        <div id="menu" class="menu">
+            <ul class="menu-items">
+                <li><a href="/myapp">Главная страница</a></li>
+                <li><a href="catalog">Продукция</a></li>
+                <li><a href="podcats">Подкасты</a></li>
+                <li><a href="articles">Статьи</a></li>
+                <li class="screen-link-active"><a href="surv">Анкета</a></li>
+                 <li class="other_menu"><a href="http://sportwiki.to/%D0%9A%D0%B0%D1%82%D0%B5%D0%B3%D0%BE%D1%80%D0%B8%D1%8F:%D0%9F%D0%B8%D1%82%D0%B0%D0%BD%D0%B8%D0%B5_%D0%B8_%D0%B4%D0%B8%D0%B5%D1%82%D1%8B"
+                        target="_blank">SportWiki</a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+     <!-------------------------------------------------------------------------------------------------------------------------------
+        Пустая секция чтобы отсупить от верхнего края страниц и не быть перекрытым fixed-nav-bar c большим zindex
+    ------------------------------------------------------------------------------------------------------------------------------->
+    <section class="contentempy">
+
+    </section>
+
+    <!-------------------------------------------------------------------------------------------------------------------------------
+       Секция с формой, стили из survay.css и inputs.css
+    ------------------------------------------------------------------------------------------------------------------------------->
+    <section class="sectionblock">
+        <form id="survform" class="surv_form" action="stub.html">
+
+            <!----------------------------------->
+            <div class="inputdecoration survdecoration">
+                <label class="b">
+                    Как часть вы занимаетесь спортом
+                </label>
+                <label>
+                    <input type="radio" name="frequency" value="everyday">Каждый день</input>
+                </label>
+                <label>
+                    <input type="radio" name="frequency" value="halfweek">2-3 раза в неделю</input>
+                </label>
+                <label>
+                    <input type="radio" name="frequency" value="week">Раз в неделю</input>
+                </label>
+                <label>
+                    <input type="radio" name="frequency" value="month">Раз в месяц</input>
+                </label>
+                <label>
+                    <input type="radio" name="frequency" value="year">Раз в год</input>
+                </label>
+                <label>
+                    <input type="radio" name="frequency" value="never" >Никогда</input>
+                </label>
+            </div>
+
+            <!----------------------------------->
+
+            <div class="inputdecoration survdecoration">
+                <label for="partday" class="b">
+                    Когда вым удобно заниматься
+                </label>
+                <select name="partday" >
+                    <option value="early">Утром</option>
+                    <option value="day">Днем</option>
+                    <option value="late">Вечером</option>
+                    <option value="night">Ночью</option>
+                    <option value="other">Все равно</option>
+                </select>
+            </div>
+
+
+            <!----------------------------------->
+
+            <div class="inputdecoration survdecoration">
+                <label class="b">Какой вид спорта вам нравится
+                    <small>(Отметьте все подходящие)</small>
+                </label>
+                <label>
+                    <input type="checkbox" name="prefsport" value="run">Бег</input></label>
+                <label>
+                    <input type="checkbox" name="prefsport" value="kerl">Керлинг</input></label>
+                <label>
+                    <input type="checkbox" name="prefsport" value="box">Бокс</input></label>
+                <label>
+                    <input type="checkbox" name="prefsport" value="ska">Санки</input></label>
+                <label>
+                    <input type="checkbox" name="prefsport" value="bys">Велосипед</input></label>
+                <label>
+                    <input type="checkbox" name="prefsport" value="chess">Шахматы</input></label>
+                <label>
+                    <input type="checkbox" name="prefsport" value="havy">Штанга</input></label>
+                <label>
+                    <input type="checkbox" name="prefsport" value="kettl">Гири</input></label>
+                <label>
+                    <input type="checkbox" name="prefsport" value="ls">Лыжи</input></label>
+                <label>
+                    <input type="checkbox" name="prefsport" value="hors">Конкур</input></label>
+            </div>
+
+
+            <!----------------------------------->
+            <div class="inputdecoration survdecoration">
+                <label lass="b">
+                    Используете ли вы спортивное питание
+                </label>
+                <label>
+                    <input type="radio" name="consume" value="yes">Да</input>
+                </label>
+                <label>
+                    <input type="radio" name="consume" value="no">Нет</input>
+                </label>
+
+            </div>
+
+            <!----------------------------------->
+
+            <div class="inputdecoration survdecoration">
+                <label class="b">Какое питание вы используете
+                    <small>(Отметьте все подходящие)</small>
+                </label>
+                <label>
+                    <input type="checkbox" name="prodtype" value="sb">Сывороточный белок</input></label>
+                <label>
+                    <input type="checkbox" name="prodtype" value="kb">Казеиновый белок</input></label>
+                <label>
+                    <input type="checkbox" name="prodtype" value="gl">Гидролизат</input></label>
+                <label>
+                    <input type="checkbox" name="prodtype" value="kr">Креатин</input></label>
+                <label>
+                    <input type="checkbox" name="prodtype" value="kl">Коллаген</input></label>
+                <label>
+                    <input type="checkbox" name="prodtype" value="lk">L-карнитин</input></label>
+            </div>
+
+            <!----------------------------------->
+
+            <div class="inputdecoration survdecoration">
+                <label for="bodytype" class="b">
+                    Ваша комплекция
+                </label>
+                <select name="bodytype" >
+                    <option value="normal">Нормальное</option>
+                    <option value="спорт">Спортивное</option>
+                    <option value="thin">Худощавое</option>
+                    <option value="thick">Плотное</option>
+                    <option value="Fat">Перевес</option>
+                    <option value="other">Не знаю</option>normal
+                </select>
+            </div>
+
+     
+            <!----------------------------------->
+            <div class="inputdecoration survdecoration">
+                <label lass="b" for="sex">
+                    Ваш пол
+                </label>
+                <label>
+                    <input type="radio" name="sex" value="m">М</input>
+                </label>
+                <label>
+                    <input type="radio" name="sex" value="f">Ж</input>
+                </label>
+
+            </div>
+
+            <!----------------------------------->
+
+            <div class="inputdecoration survdecoration">
+                <label for="age" class="b">
+                    Введите свой возраст
+                </label>
+                <input type="text" name="age" placeholder="Введите свой возраст" />
+            </div>
+            <!----------------------------------->
+
+          
+            <div class="inputdecoration survdecoration">
+                <label for="email"  class="b">
+                    Email для обратной связи
+                </label>
+                <input type="email" name ="email"  placeholder="Введите email" />
+            </div>
+
+            <!----------------------------------->
+
+            <div class="inputdecoration survdecoration">
+                <label for="comment" class="b">
+                    Комментарий
+                </label>
+                <textarea name="comment" placeholder="Введите комментарий"></textarea>
+            </div>
+
+            <!-----------type="submit" внутри form------------------------>
+            
+
+            <button type="submit" value="submit" class="button-dark button-dark_invert">
+                Отправить
+            </button>
+        </form>
+    </section>
+</body>
