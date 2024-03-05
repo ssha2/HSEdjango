@@ -28,9 +28,9 @@
             $.ajax({ 
                 url: 'task1002', 
                 method: 'GET', 
-                data: formData, 
-                processData: false, 
-                contentType: false, 
+                data: {
+                    float: '123'
+                },
                 success: function (response) {                       
     
                     var jresponse = JSON.parse(response);
@@ -48,45 +48,26 @@
     <script name="for_modlas">
 
 
+            /*
+             показываем модальный div c текстом отправки
+            */ 
+            function showDivWithForm(capt,text)
+            {
+                document.getElementById("mcapt").innerText=capt;
+                document.getElementById("mtext").innerText=text;
+                document.getElementById("divModalUser").style.display = "block";
+                //setTimeout(()=>onclickSpanToHideCurentDiv('divModalUser'),1500);
 
-        /*
-         показываем модальный div c большой картинкой
-        */ 
-        function showDivWithExpandImage(imgElemFromCatalog)
-        {
-
-            document.getElementById("imageBig").src = imgElemFromCatalog.src;
-            document.getElementById("divModalImage").style.display = "block";
-        }
-
-        /*
-          скрываем div по его ID
-        */ 
-        function onclickSpanToHideCurentDiv(visibled_divID)
-        {
-            document.getElementById(visibled_divID).style.display = "none";
-        }
-
-        /*
-         показываем модальный div c формой регистарации 
-        */ 
-        function showDivWithForm()
-        {
-            document.getElementById("divModalUser").style.display = "block";
-        }
-        /*
-         отправляем форму регистарации 
-        */ 
-        function submitForm()
-        {
-            //текущая дата
-            const today = new Date(Date.now());
-            // устанавливаем для hidden элеимента
-            document.getElementById('data').value = today.toLocaleDateString();
-            document.getElementById("formForUserReg").submit();
-            // скрываем форму
-            document.getElementById("divModalImage").style.display = "block";
-        }
+            }
+        
+            // скрываем div по его ID
+    
+            function onclickSpanToHideCurentDiv(visibled_divID)
+            {
+                document.getElementById(visibled_divID).style.display = "none";
+                document.getElementById("mcapt").innerText="";
+                document.getElementById("mtext").innerText="";
+            }
 
 
 
@@ -128,6 +109,7 @@
     ------------------------------------------------------------------------------------------------------------------------------->
 
     <section class="sectionblock" id="sec_stud">
+        <input type="button" title="Задча 1002" onclick="task1002()">
         <h2>{{descript.prod_name}}</h2>
         <h3>{{descript.prod_desctipr}}</h3>
         <hr/>
@@ -160,7 +142,21 @@
 
 
 
+    <div id="divModalUser" class="modal">
 
+        <!-- Modal content -->
+        <div class="modal-content overcolor">
+            <span class="close" onclick="onclickSpanToHideCurentDiv('divModalUser')" >&times;</span>
+            <h4 id="mcapt"></h4>
+            <br/>
+            <span id="mtext"></span>
+            <br/>
+            
+            <!--a class="button-dark button-dark_invert" style="font-size: 8px;" href="javascript:void(0);" onclick="onclickSpanToHideCurentDiv('divModalUser')">
+                Закрыть</a-->
+        </div>
+
+    </div>
 
 </body>
 

@@ -93,6 +93,18 @@ def mystuds(request):
    return render(request, "mystuds.html",{'descript':descript,'data': data_people})
 
 
+
+def task1002():
+    try:
+        param1 = float(request.GET.get('float', None))
+        
+        return HttpResponse('{ "capt":"Результат from server","text":"Данные успешно получены для'+str(float)+' это число ' +"положительное" if param1<0 else ("отрицательное" if param1>0 else "нулевое")+'" }')
+    except Exception as e:
+        #return HttpResponse(status=500,text=str(e))
+        return HttpResponse('{ "capt":"Ошибка","text":"'+str(e)+'" }')
+    
+
+
 def surv_result(request):
     try:
         survey = Survey(request.POST)
