@@ -63,7 +63,7 @@ def mystuds(request):
    
    data_people ={
        'me':{
-           'label':'Я',
+           'label':'О себе',
            'details':elem_me
        },
        'direct':{

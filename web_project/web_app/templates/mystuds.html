@@ -15,6 +15,36 @@
     <link rel="stylesheet" href="{% static "assets/podcast.css" %}">
 
  
+    <script src= 
+    "{% static "js/jquery.min.js" %}"> 
+        </script>
+
+
+<script> 
+//1002. Дано вещественное число. Определить, какое это число: положительное, отрицательное, ноль.
+    function task1002()
+    {
+           
+            $.ajax({ 
+                url: 'task1002', 
+                method: 'GET', 
+                data: formData, 
+                processData: false, 
+                contentType: false, 
+                success: function (response) {                       
+    
+                    var jresponse = JSON.parse(response);
+                    showDivWithForm(jresponse.capt,jresponse.text)
+                }, 
+                error: function (xhr, status, error) {                        
+                    showDivWithForm("Error",error)
+                } 
+            }); 
+    }
+</script> 
+
+
+
     <script name="for_modlas">
 
 
@@ -104,7 +134,7 @@
         <h2>Люди</h2>
         <div >
             {% for key, value in data.items %}
-                <div style="border: 1px;border-color: blue;">{{ value.label }}
+                <div style="border-top:2px solid rgb(48, 93, 123);"><u>{{ value.label }}</u>
                     <table>
                         
                             <tr><td><b>ФИО:</b>{{ value.details.name }}</td>
@@ -125,7 +155,6 @@
 
 
     </section>
-
 
 
 
