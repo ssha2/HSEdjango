@@ -1,7 +1,11 @@
+import logging
+
 from django.shortcuts import render
 from django.http import HttpResponse,HttpRequest
 
 from .survey import Survey
+
+logger = logging.getLogger('django')
 
 def index(request):
     return render(request, "index.html")
@@ -28,8 +32,8 @@ def surv_result(request):
     try:
         survey = Survey(request.POST)
         #survey.changed_data[""]
-
-        return HttpResponse('{ "capt":"Результат","text":"Данные успешно получены" }')
+   
+        return HttpResponse('{ "capt":"Результат","text":"Данные успешно получены для'+survey.data['email']+'" }')
     except Exception as e:
         #return HttpResponse(status=500,text=str(e))
         return HttpResponse('{ "capt":"Ошибка","text":"'+str(e)+'" }')
