@@ -10,7 +10,6 @@ urlpatterns = [
     path("surv", views.surv, name="surv"),
     path("calc", views.calc, name="calc"),
     path("mystuds", views.mystuds, name="mystuds"),
-    
     path("surv_result", views.surv_result, name="surv_result"),
     path("task1002", views.task1002, name="task1002"),
     

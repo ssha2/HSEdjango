@@ -94,11 +94,11 @@ def mystuds(request):
 
 
 
-def task1002():
+def task1002(request):
     try:
         param1 = float(request.GET.get('float', None))
-        
-        return HttpResponse('{ "capt":"Результат from server","text":"Данные успешно получены для'+str(float)+' это число ' +"положительное" if param1<0 else ("отрицательное" if param1>0 else "нулевое")+'" }')
+        results="[положительное]" if param1>0 else ("[отрицательное]" if param1<0 else "[нулевое]")
+        return HttpResponse('{ "capt":"Результат from server","text":"Данные успешно получены для ['+str(param1)+'] это число ' +results+'" }')
     except Exception as e:
         #return HttpResponse(status=500,text=str(e))
         return HttpResponse('{ "capt":"Ошибка","text":"'+str(e)+'" }')
