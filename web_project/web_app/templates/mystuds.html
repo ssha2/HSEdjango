@@ -102,9 +102,9 @@
         <h3>{{descript.prod_desctipr}}</h3>
         <hr/>
         <h2>Люди</h2>
-        <ul>
+        <div >
             {% for key, value in data.items %}
-                <li>{{ value.label }}
+                <div style="border: 1px;border-color: blue;">{{ value.label }}
                     <table>
                         
                             <tr><td><b>ФИО:</b>{{ value.details.name }}</td>
@@ -117,9 +117,9 @@
                             
                         
                     </table>
-                </li>
+                </div>
             {% endfor %}
-        </ul>
+        </div>
        
 
 
