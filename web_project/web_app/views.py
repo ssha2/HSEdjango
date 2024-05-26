@@ -3,7 +3,9 @@ import logging
 from django.shortcuts import render
 from django.http import HttpResponse,HttpRequest
 
-from .survey import Survey
+
+from .models import Surmodel
+
 
 logger = logging.getLogger('django')
 
@@ -107,11 +109,33 @@ def task1002(request):
 
 def surv_result(request):
     try:
-        survey = Survey(request.POST)
-        #survey.changed_data[""]
-   
-        return HttpResponse('{ "capt":"Результат from server","text":"Данные успешно получены для'+survey.data['email']+'" }')
+        # 1002
+        try:
+            task1002=float(request.POST["age"])
+        except ValueError:
+            raise Exception("Возраст должен быть числом")
+        if not task1002.is_integer():
+            raise Exception("Возраст должен быть целым числом")
+        if task1002<=0:
+            raise Exception("Возраст должен быть положительным числом >0")
+        if task1002<18:
+            raise Exception("Вам должно быть 18")
+        #save db
+        survey = Surmodel.objects.create( \
+            frequency=  request.POST["frequency"] if "frequency" in request.POST else "", \
+            partday=request.POST["partday"] if "partday" in request.POST else "", \
+            prefsport=request.POST["prefsport"] if "prefsport" in request.POST else "", \
+            consume=request.POST["consume"] if "consume" in request.POST else "", \
+            prodtype=request.POST["prodtype"] if "prodtype" in request.POST else "", \
+            bodytype=request.POST["bodytype"] if "bodytype" in request.POST else "", \
+            sex=request.POST["sex"] if "sex" in request.POST else "", \
+            age=task1002, \
+            email=request.POST["email"] if "email" in request.POST else "", \
+            comment=request.POST["comment"] if "comment" in request.POST else "" \
+        )     
+        text='{ "capt":"Ответ сервера","text":"Данные успешно получены и сохранены id='+str(survey.id)+'" }'
+        return HttpResponse(text)
     except Exception as e:
         #return HttpResponse(status=500,text=str(e))
-        return HttpResponse('{ "capt":"Ошибка","text":"'+str(e)+'" }')
+        return HttpResponse('{ "capt":"Ошибка сервера","text":"'+str(e)+'" }')
   
