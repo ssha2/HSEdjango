@@ -30,6 +30,10 @@ def surv(request):
 def calc(request):
     return render(request, "calc.html")
 
+def stats(request):
+    return render(request, "stats.html")
+
+
 def mystuds(request):
    
    elem_me = {
@@ -133,6 +137,7 @@ def surv_result(request):
             email=request.POST["email"] if "email" in request.POST else "", \
             comment=request.POST["comment"] if "comment" in request.POST else "" \
         )     
+        survey.save()
         text='{ "capt":"Ответ сервера","text":"Данные успешно получены и сохранены id='+str(survey.id)+'" }'
         return HttpResponse(text)
     except Exception as e:
