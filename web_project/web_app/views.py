@@ -122,15 +122,19 @@ def stats(request):
         elif (request.GET.get('age_case')=="gte"):
             survey_filtered=survey_filtered.filter(age__gte=request.GET.get('age_value'))        
 
-    if not request.GET.get('sex')=="-":
-        survey_filtered=survey_filtered.filter(sex=request.GET.get('sex'))
-        
+    if request.GET.get('sex'):
+        if not request.GET.get('sex')=="any":
+            survey_filtered=survey_filtered.filter(sex=request.GET.get('sex'))
+    
+    if request.GET.get('partday'):
+        if not request.GET.get('partday')=="any":
+            survey_filtered=survey_filtered.filter(partday=request.GET.get('partday'))
 
-    if not request.GET.get('partday')=="any":
-        survey_filtered=survey_filtered.filter(partday=request.GET.get('partday'))
-
-    if not request.GET.get('sort_case')=="asc":
-        survey_filtered=survey_filtered.order_by(request.GET.get('sort_value'))
+    if request.GET.get('sort_value'):
+        if request.GET.get('sort_case')=="asc":
+            survey_filtered=survey_filtered.order_by(request.GET.get('sort_value'))
+        else :
+            survey_filtered=survey_filtered.order_by("-"+request.GET.get('sort_value'))
 
     return render(request, "stats.html",{'data':survey_filtered})
 
