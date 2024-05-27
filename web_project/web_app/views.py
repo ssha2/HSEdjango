@@ -109,7 +109,29 @@ def task1002(request):
     
 
 def stats(request):
-    survey_filtered = Surmodel.objects.filter(age__gt=0)
+    survey_filtered = Surmodel.objects.filter(id__gte=0)
+    if request.GET.get('age_value'):
+        if (request.GET.get('age_case')=="eq"):
+            survey_filtered=survey_filtered.filter(age=request.GET.get('age_value'))
+        elif (request.GET.get('age_case')=="lt"):
+            survey_filtered=survey_filtered.filter(age__lt=request.GET.get('age_value')) 
+        elif (request.GET.get('age_case')=="gt"):
+            survey_filtered=survey_filtered.filter(age__gt=request.GET.get('age_value'))  
+        elif (request.GET.get('age_case')=="lte"):
+            survey_filtered=survey_filtered.filter(age__lte=request.GET.get('age_value')) 
+        elif (request.GET.get('age_case')=="gte"):
+            survey_filtered=survey_filtered.filter(age__gte=request.GET.get('age_value'))        
+
+    if not request.GET.get('sex')=="-":
+        survey_filtered=survey_filtered.filter(sex=request.GET.get('sex'))
+        
+
+    if not request.GET.get('partday')=="any":
+        survey_filtered=survey_filtered.filter(partday=request.GET.get('partday'))
+
+    if not request.GET.get('sort_case')=="asc":
+        survey_filtered=survey_filtered.order_by(request.GET.get('sort_value'))
+
     return render(request, "stats.html",{'data':survey_filtered})
 
 

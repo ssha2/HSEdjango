@@ -75,10 +75,80 @@
 
     <section class="sectionblock" id="sec_stat">
 
-        <!-- <h2>{{descript.prod_name}}</h2>
-        <h3>{{descript.prod_desctipr}}</h3>
-        <hr />
-        <h2>Люди</h2> -->
+        <div>
+            
+            <form  >
+                <table><tr><td>
+                <h5>Фильтр</h5>
+                <div   style="display: flex; font-size: small;" >
+                <span style="margin-right: 2px;">
+                    Возраст:
+                </span><br/>
+                <select name="age_case"  style="width: 40px;">
+                    <option value="eq"> = </option>
+                    <option value="lt"> &lt; </option>
+                    <option value="gt"> &gt; </option>
+                    <option value="lte"> =&lt; </option>
+                    <option value="gte"> &gt;= </option>
+                </select>
+                <input type="text" name="age_value"  style="width: 60px;margin-right: 10px;" />
+                <span style="margin-right: 2px;">
+                    Пол:
+                </span><br/>
+                <select name="sex"  style="width: 100px; margin-right: 10px;">
+                    <option value="any"> Любой </option>
+                    <option value="М"> М </option>
+                    <option value="Ж"> Ж </option>
+                </select>
+                <span style="margin-right: 2px;">
+                    Часть дня:
+                </span><br/>
+                <select name="partday" >
+                    <option value="Все равно">Все равно</option>
+                    <option value="Утром">Утром</option>
+                    <option value="Днем">Днем</option>
+                    <option value="Вечером">Вечером</option>
+                    <option value="Ночью">Ночью</option>
+                   
+                </select>
+            </div>
+            </td><td>
+                <h5>Сортировка</h5>
+                <div   style="display: flex; font-size: small;" >
+                <span style="margin-right: 2px;">
+                    Сортировать:
+                </span><br/>
+                <select name="sort_case"  style="width: 110px;margin-right: 10px;"">
+                    <option value="asc"> Возрастание </option>
+                    <option value="desc"> Убывание </option>
+                </select>
+                <span style="margin-right: 2px;">
+                    Колонка:
+                </span><br/>
+                <select name="sort_value" >
+                    
+                    <option value="age">Возраст</option>
+                    <option value="frequency">Частота</option>
+                    <option value="partday">Часть дня</option>
+                    <option value="prefsport">Спорт</option>
+                    <option value="consume">Спортпит</option>
+                    <option value="prodtype">Продукт</option>
+                    <option value="bodytype">Телосложение</option>
+                    <option value="sex">Пол</option>
+                    <option value="email">Email</option>
+            
+
+                </select>
+            </div>
+            </td></tr>
+        </table>
+        <button type="submit" value="submit" class="button-dark button-dark_invert">
+            Применить
+        </button>
+        
+    </form>
+        </div>
+        
         <div style="overflow: scroll;height: 350px;">
             <table>
                 <tr>
