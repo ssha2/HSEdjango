@@ -30,8 +30,6 @@ def surv(request):
 def calc(request):
     return render(request, "calc.html")
 
-def stats(request):
-    return render(request, "stats.html")
 
 
 def mystuds(request):
@@ -109,6 +107,10 @@ def task1002(request):
         #return HttpResponse(status=500,text=str(e))
         return HttpResponse('{ "capt":"Ошибка","text":"'+str(e)+'" }')
     
+
+def stats(request):
+    survey_filtered = Surmodel.objects.filter(age__gt=0)
+    return render(request, "stats.html",{'data':survey_filtered})
 
 
 def surv_result(request):

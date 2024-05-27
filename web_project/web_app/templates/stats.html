@@ -13,86 +13,29 @@
     <link rel="stylesheet" href="static/assets/modal.css">
 
     <style type="text/css">
-        .styled {
-            border: 0;
-            line-height: 2.5;
-            padding: 0 20px;
-            font-size: 1rem;
-            text-align: center;
-            color: #fff;
-            text-shadow: 1px 1px 1px #000;
-            border-radius: 10px;
-            background-color: rgb(220 0 0 / 100%);
-            background-image: linear-gradient(to top left,
-                    rgb(0 0 0 / 20%),
-                    rgb(0 0 0 / 20%) 30%,
-                    rgb(0 0 0 / 0%));
-            box-shadow:
-                inset 2px 2px 3px rgb(255 255 255 / 60%),
-                inset -2px -2px 3px rgb(0 0 0 / 60%);
+        table {
+            border-spacing: 0;
+            width: 100%;
+            border: 1px solid #ddd;
+            font-size: small;
         }
 
-        .styled:hover {
-            background-color: rgb(255 0 0 / 100%);
+        th,
+        td {
+            text-align: left;
+            padding: 16px;
         }
 
-        .styled:active {
-            box-shadow:
-                inset -2px -2px 3px rgb(255 255 255 / 60%),
-                inset 2px 2px 3px rgb(0 0 0 / 60%);
+        tr:nth-child(even) {
+            background-color: #c2ded4
         }
-        input[type="text"] {
-                display: block;
-                width: 150px;
-                height: calc(2.25rem + 2px);
-                padding: 0.375rem 0.75rem;
-                font-family: inherit;
-                font-size: 1rem;
-                /* font-weight: 400;*/
-                line-height: 1.5;
-                color: #212529;
-                background-color: #fff;
-                background-clip: padding-box;
-                border: 1px solid #bdbdbd;
-                border-radius: 0.25rem;
-                transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-        }
-        
     </style>
 
     <script src="static/js/jquery.min.js">
     </script>
 
 
-    <script>
-    </script>
 
-
-
-    <script name="for_modlas">
-
-        /*
-         показываем модальный div c текстом отправки
-        */
-        function showDivWithForm(capt, text)
-        {
-            document.getElementById("mcapt").innerText = capt;
-            document.getElementById("mtext").innerText = text;
-            document.getElementById("divModalUser").style.display = "block";
-            //setTimeout(()=>onclickSpanToHideCurentDiv('divModalUser'),1500);
-
-        }
-
-        // скрываем div по его ID
-
-        function onclickSpanToHideCurentDiv(visibled_divID)
-        {
-            document.getElementById(visibled_divID).style.display = "none";
-            document.getElementById("mcapt").innerText = "";
-            document.getElementById("mtext").innerText = "";
-        }
-
-    </script>
 
 </head>
 
@@ -127,67 +70,53 @@
     </section>
 
     <!-------------------------------------------------------------------------------------------------------------------------------
-        Секция меню article, основные стили в tablewithbg.css
+        tablewithbg.css
     ------------------------------------------------------------------------------------------------------------------------------->
 
-    <section class="sectionblock" id="sec_stud">
-        <div>
-            <span>Задача 1002: </span><input type="text"  id="id_input" placeholder="ЧИСЛО"/>
-            <input class="styled" type="button" value="Задча 1002" onclick="task1002();" />
-        </div>
+    <section class="sectionblock" id="sec_stat">
 
-        <h2>{{descript.prod_name}}</h2>
+        <!-- <h2>{{descript.prod_name}}</h2>
         <h3>{{descript.prod_desctipr}}</h3>
         <hr />
-        <h2>Люди</h2>
-        <div>
-            {% for key, value in data.items %}
-            <div style="border-top:2px solid rgb(48, 93, 123);"><u>{{ value.label }}</u>
-                <table>
+        <h2>Люди</h2> -->
+        <div style="overflow: scroll;height: 350px;">
+            <table>
+                <tr>
+                    <th>Частота</th>
+                    <th>Часть дня</th>            
+                    <th>Спорт</th>
+                    <th>Спортпит</th>
+                    <th>Продукт</th>
+                    <th>Телосложение</th>     
+                    <th>Пол</th>  
+                    <th>Возраст</th>
+                    <th>Email</th>
+                    <th>Комменты</th>
+                </tr>
+                {% for row in data %}
+    
+                <tr>
+                    <td>{{ row.frequency }}</td>
+                    <td>{{ row.partday }}</td>            
+                    <td>{{ row.prefsport }}</td>
+                    <td>{{ row.consume }}</td>
+                    <td>{{ row.prodtype }}</td>
+                    <td>{{ row.bodytype }}</td>     
+                    <td>{{ row.sex }}</td>  
+                    <td>{{ row.age }}</td>
+                    <td>{{ row.email }}</td>
+                    <td>{{ row.comment }}</td>
+                </tr>
 
-                    <tr>
-                        <td><b>ФИО:</b>{{ value.details.name }}</td>
-                        <td rowspan="3">
-                            <img src="{{value.details.foto_path}}" alt="фото" width="30%">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><b>Email:</b>{{value.details.email}}</td>
-                    </tr>
-                    <tr>
-                        <td><b>Телефон:</b>{{ value.details.phone }}</td>
-                    </tr>
+                {% endfor %}
+            </table>
 
-
-                </table>
-            </div>
-            {% endfor %}
         </div>
-
-
-
 
     </section>
 
 
 
-
-
-    <div id="divModalUser" class="modal">
-
-        <!-- Modal content -->
-        <div class="modal-content overcolor">
-            <span class="close" onclick="onclickSpanToHideCurentDiv('divModalUser')">&times;</span>
-            <h4 id="mcapt"></h4>
-            <br />
-            <span id="mtext"></span>
-            <br />
-
-            <!--a class="button-dark button-dark_invert" style="font-size: 8px;" href="javascript:void(0);" onclick="onclickSpanToHideCurentDiv('divModalUser')">
-                Закрыть</a-->
-        </div>
-
-    </div>
 
 </body>
 
