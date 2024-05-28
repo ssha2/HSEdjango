@@ -2,7 +2,7 @@ import logging
 
 from django.shortcuts import render
 from django.http import HttpResponse,HttpRequest
-
+from django.db.models import Avg, Min,Max
 
 from .models import Surmodel
 
@@ -52,6 +52,7 @@ def mystuds(request):
         'email': 'smitnv@example.com',
         'phone': ''
     }
+   
    elem_st1 = {
         'name': 'Смирнов Даниил',
         'foto_path': 'static/photos/arni.png',
@@ -136,7 +137,12 @@ def stats(request):
         else :
             survey_filtered=survey_filtered.order_by("-"+request.GET.get('sort_value'))
 
-    return render(request, "stats.html",{'data':survey_filtered})
+    calc = {
+        'avg_age':round(survey_filtered.aggregate(Avg("age"))['age__avg'],0),
+        'count_rec':survey_filtered.count()
+    }
+
+    return render(request, "stats.html",{'data':survey_filtered,'calc':calc})
 
 
 def surv_result(request):

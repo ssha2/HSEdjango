@@ -152,7 +152,7 @@
         
         <div style="overflow: scroll;height: 350px;">
             <table>
-                <tr style="background-color: rgb(19, 48, 49);color: aliceblue;">
+                <tr style="background-color: rgb(19, 48, 49);color: aliceblue;font-weight: bold;">
                     <th>Частота</th>
                     <th>Часть дня</th>            
                     <th>Спорт</th>
@@ -180,6 +180,17 @@
                 </tr>
 
                 {% endfor %}
+
+                <tr style="background-color: rgb(19, 48, 49);color: aliceblue;font-weight: bold;" >
+                    <td colspan="3">Кол-во</td>
+                    <td>{{calc.count_rec}}</td>
+                    <td  colspan="3"> Средний возраст</td>  
+                    <td>{{calc.avg_age}}</td>
+                    <td colspan="2"> </td>
+                    
+                </tr>
+
+
             </table>
 
         </div>
