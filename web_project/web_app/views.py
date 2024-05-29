@@ -3,6 +3,7 @@ import logging
 from django.shortcuts import render
 from django.http import HttpResponse,HttpRequest
 from django.db.models import Avg, Min,Max
+from django.contrib.auth.decorators import login_required
 
 from .models import Surmodel
 
@@ -109,7 +110,12 @@ def task1002(request):
         return HttpResponse('{ "capt":"Ошибка","text":"'+str(e)+'" }')
     
 
+@login_required(login_url='accounts/login/')
 def stats(request):
+
+    # if not  ( request.user.username=="analist" and request.user.is_authenticated):
+    #     return HttpResponse("Пожалуйста, авторизуйтесь.")
+
     survey_filtered = Surmodel.objects.filter(id__gte=0)
     if request.GET.get('age_value'):
         if (request.GET.get('age_case')=="eq"):
