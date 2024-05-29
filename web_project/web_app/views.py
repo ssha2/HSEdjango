@@ -5,7 +5,7 @@ from django.http import HttpResponse,HttpRequest
 from django.db.models import Avg, Min,Max,Sum
 from django.contrib.auth.decorators import login_required
 
-from .models import Surmodel
+from .models import Surmodel,Catalog
 
 
 logger = logging.getLogger('django')
@@ -15,7 +15,8 @@ def index(request):
 
 
 def catalog(request):
-     return render(request, "catalog.html")
+     catalog = Catalog.objects.filter(id__gte=0) #id>0
+     return render(request, "catalog.html",{'data': catalog})
 
 def podcats(request):
      return render(request, "podcats.html")
@@ -116,7 +117,7 @@ def stats(request):
     # if not  ( request.user.username=="analist" and request.user.is_authenticated):
     #     return HttpResponse("Пожалуйста, авторизуйтесь.")
 
-    survey_filtered = Surmodel.objects.filter(id__gte=0)#id>0
+    survey_filtered = Surmodel.objects.filter(id__gte=0) #id>0
     if request.GET.get('age_value'):
         if (request.GET.get('age_case')=="eq"): #=
             survey_filtered=survey_filtered.filter(age=request.GET.get('age_value'))

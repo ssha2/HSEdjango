@@ -12,3 +12,10 @@ class Surmodel(models.Model):
     email= models.CharField( max_length=100)
     comment= models.CharField( max_length=100)
 
+
+class Catalog(models.Model):
+    img= models.CharField( max_length=500)
+    sch= models.CharField( max_length=500)
+    name=models.CharField( max_length=100)
+    desc= models.CharField( max_length=500)
+

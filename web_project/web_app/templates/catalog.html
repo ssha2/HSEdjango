@@ -83,176 +83,23 @@
             <!-- собственно начало верски flexbox  -->
             <section class="cards">
 
+                {% for row in data %}
                 <article class="card">
                     <picture class="tooltip">
-                        <span class="tooltipspan"><a href="https://www.google.com/search?q=primecraft+products"
+                        <span class="tooltipspan"><a href="{{row.sch}}"
                                 target="_blank""><img src="{% static "assets/loupe-icon-g.png" %}" alt="google"
                                 style="width:30px;height:30px;"></a>
                         </span>
 
                         <img onclick="showDivWithExpandImage(this)"
-                            src="https://primekraft.ru/upload/iblock/63f/63f6703325403ddb7046bb09ca0ceaf0.jpg"
+                            src="{{row.img}}"
                             alt="изображение продукта">
                     </picture>
                     <div class="card-content">
-                        <p>Это протеин тут нужно что-то написать</p>
+                        <p>{{row.desc}}</p>
                     </div><!-- .card-content -->
                 </article><!-- .card -->
-
-
-                <article class="card">
-                    <picture class="tooltip">
-                        <span class="tooltipspan"><a href="https://www.google.com/search?q=primecraft+products"
-                                target="_blank""><img src="{% static "assets/loupe-icon-g.png" %}" alt="google"></a>
-                        </span>
-                        <img onclick="showDivWithExpandImage(this)"
-                            src="https://primekraft.ru/upload/delight.webpconverter/upload/iblock/74f/74f13df276b51b9e60ef74c283d5d37e.png.webp?164319081337038"
-                            alt="изображение продукта">
-                    </picture>
-                    <div class="card-content">
-                        <p>Это протеин тут нужно что-то написать</p>
-                    </div><!-- .card-content -->
-                </article><!-- .card -->
-
-
-
-                <article class="card">
-                    <picture class="tooltip">
-                        <span class="tooltipspan"><a href="https://www.google.com/search?q=primecraft+products"
-                                target="_blank""><img src="{% static "assets/loupe-icon-g.png" %}" alt="google"></a>
-                        </span>
-                        <img onclick="showDivWithExpandImage(this)"
-                            src="https://primekraft.ru/upload/iblock/061/06198a19fd53d44f109c478dd3680329.png"
-                            alt="изображение продукта">
-                    </picture>
-                    <div class="card-content">
-                        <p>Это протеин тут нужно что-то написать</p>
-                    </div><!-- .card-content -->
-                </article><!-- .card -->
-
-
-                <article class="card">
-                    <picture class="tooltip">
-                        <span class="tooltipspan"><a href="https://www.google.com/search?q=primecraft+products"
-                                target="_blank""><img src="{% static "assets/loupe-icon-g.png" %}" alt="google"></a>
-                        </span>
-                        <img onclick="showDivWithExpandImage(this)"
-                            src="https://primekraft.ru/upload/delight.webpconverter/upload/iblock/941/94126c843ca90ba4ebdd801296d8c603.jpg.webp?164181219717666"
-                            alt="изображение продукта">
-                    </picture>
-                    <div class="card-content">
-                        <p>Это протеин тут нужно что-то написать</p>
-                    </div><!-- .card-content -->
-                </article><!-- .card -->
-
-
-                <article class="card">
-                    <picture class="tooltip">
-                        <span class="tooltipspan"><a href="https://www.google.com/search?q=primecraft+products"
-                                target="_blank""><img src="{% static "assets/loupe-icon-g.png" %}" alt="google"></a>
-                        </span>
-                        <img onclick="showDivWithExpandImage(this)"
-                            src="https://primekraft.ru/upload/iblock/141/uo302q0zrjnla7b3z1qx3o8125fbwxya.jpg"
-                            alt="изображение продукта">
-                    </picture>
-                    <div class="card-content">
-                        <p>Это протеин тут нужно что-то написать</p>
-                    </div><!-- .card-content -->
-                </article><!-- .card -->
-
-
-                <article class="card">
-                    <picture class="tooltip">
-                        <span class="tooltipspan"><a href="https://www.google.com/search?q=primecraft+products"
-                                target="_blank""><img src="{% static "assets/loupe-icon-g.png" %}" alt="google"></a>
-                        </span>
-                        <img onclick="showDivWithExpandImage(this)"
-                            src="https://primekraft.ru/upload/iblock/9a0/em3nmv2xedlamk1u50dwpsg8r3shn4zc.jpg"
-                            alt="изображение продукта">
-                    </picture>
-                    <div class="card-content">
-
-                        <p>Это протеин тут нужно что-то написать</p>
-                    </div><!-- .card-content -->
-                </article><!-- .card -->
-
-                <article class="card">
-
-                    <picture class="tooltip">
-                        <span class="tooltipspan"><a href="https://www.google.com/search?q=primecraft+products"
-                                target="_blank""><img src="{% static "assets/loupe-icon-g.png" %}" alt="google"></a>
-                        </span>
-                        <img onclick="showDivWithExpandImage(this)"
-                            src="https://primekraft.ru/upload/iblock/2ab/2abecded2a36b7d0762f604fb5dc9082.png"
-                            alt="изображение продукта">
-                    </picture>
-                    <div class="card-content">
-                        <p>Это протеин тут нужно что-то написать</p>
-                    </div>
-                </article><!-- .card -->
-
- 
-                <article class="card">
-
-                    <picture class="tooltip">
-                        <span class="tooltipspan"><a href="https://www.google.com/search?q=mutant+protein+products"
-                                target="_blank""><img src="{% static "assets/loupe-icon-g.png" %}" alt="google"></a>
-                        </span>
-                        <img onclick="showDivWithExpandImage(this)"
-                            src="https://cdn.shopify.com/s/files/1/0080/8740/4641/products/32451US_MUTANT_FLEX_FOOD_Vanilla_Cupcake_flavor_1.94_LB_31_oz_880_g_v1.01-left-MS_540x.jpg?v=1652116312"
-                            alt="изображение продукта">
-                    </picture>
-                    <div class="card-content">
-                        <p>Это протеин тут нужно что-то написать</p>
-                    </div>
-
-                </article>
-
-
-                <article class="card">
-                    <picture class="tooltip">
-                        <span class="tooltipspan"><a href="https://www.google.com/search?q=mutant+protein+products"
-                                target="_blank""><img src="{% static "assets/loupe-icon-g.png" %}" alt="google"></a>
-                        </span>
-                        <img onclick="showDivWithExpandImage(this)"
-                            src="https://cdn.shopify.com/s/files/1/0080/8740/4641/products/35303US_MUTANT_PRO_Cookies_N_Cream_Flavor_2_LB_908_G_v1.00-MS_540x.jpg?v=1658179154"
-                            alt="изображение продукта">
-                    </picture>
-                    <div class="card-content">
-                        <p>Это протеин тут нужно что-то написать</p>
-                    </div><!-- .card-content -->
-                </article><!-- .card -->
-
-
-                <article class="card">
-                    <picture class="tooltip">
-                        <span class="tooltipspan"><a href="https://www.google.com/search?q=mutant+protein+products"
-                                target="_blank""><img src="{% static "assets/loupe-icon-g.png" %}" alt="google"></a>
-                        </span>
-                        <img onclick="showDivWithExpandImage(this)"
-                            src="https://cdn.shopify.com/s/files/1/0080/8740/4641/products/32602USMUTANTFLEXFOODChocolateBrownieflavor270g_45gx6SS_DisplayerBoxv1.01-Left-Open-MS_540x.jpg?v=1652304574"
-                            alt="изображение продукта">
-                    </picture>
-                    <div class="card-content">
-                        <p>Это протеин тут нужно что-то написать</p>
-                    </div><!-- .card-content -->
-                </article><!-- .card -->
-
-
-                <article class="card">
-                    <picture class="tooltip">
-                        <span class="tooltipspan"><a
-                                href="https://www.google.com/search?q=ultimate+nutrition+protein+products"
-                                target="_blank""><img src="{% static "assets/loupe-icon-g.png" %}" alt="google"></a>
-                        </span>
-                        <img onclick="showDivWithExpandImage(this)"
-                            src="https://cdn.shopify.com/s/files/1/0080/8740/4641/products/33015UXMUTANTBCAA9.7RocketPopFlavor360g_12.7oz_v1.00-MS_540x.jpg?v=1656694979"
-                            alt="изображение продукта">
-                    </picture>
-                    <div class="card-content">
-                        <p>Это протеин тут нужно что-то написать</p>
-                    </div><!-- .card-content -->
-                </article><!-- .card -->
+                {% endfor %}
 
             </section>
         </div>
