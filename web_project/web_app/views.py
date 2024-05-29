@@ -144,9 +144,10 @@ def stats(request):
         else : # desc> -column
             survey_filtered=survey_filtered.order_by("-"+request.GET.get('sort_value'))
 
+    avg_result=survey_filtered.aggregate(Avg("age"))
     calc = {
         #                                             field   field__avg
-        'avg_age':round(survey_filtered.aggregate(Avg("age"))['age__avg'],0),
+        'avg_age':round(avg_result['age__avg'] if not avg_result['age__avg']==None else 0 ,0),
         'count_rec':survey_filtered.count()
     }
 
