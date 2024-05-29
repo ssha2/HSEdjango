@@ -2,7 +2,7 @@ import logging
 
 from django.shortcuts import render
 from django.http import HttpResponse,HttpRequest
-from django.db.models import Avg, Min,Max
+from django.db.models import Avg, Min,Max,Sum
 from django.contrib.auth.decorators import login_required
 
 from .models import Surmodel
@@ -116,17 +116,17 @@ def stats(request):
     # if not  ( request.user.username=="analist" and request.user.is_authenticated):
     #     return HttpResponse("Пожалуйста, авторизуйтесь.")
 
-    survey_filtered = Surmodel.objects.filter(id__gte=0)
+    survey_filtered = Surmodel.objects.filter(id__gte=0)#id>0
     if request.GET.get('age_value'):
-        if (request.GET.get('age_case')=="eq"):
+        if (request.GET.get('age_case')=="eq"): #=
             survey_filtered=survey_filtered.filter(age=request.GET.get('age_value'))
-        elif (request.GET.get('age_case')=="lt"):
+        elif (request.GET.get('age_case')=="lt"):  #<
             survey_filtered=survey_filtered.filter(age__lt=request.GET.get('age_value')) 
-        elif (request.GET.get('age_case')=="gt"):
+        elif (request.GET.get('age_case')=="gt"):  #>
             survey_filtered=survey_filtered.filter(age__gt=request.GET.get('age_value'))  
-        elif (request.GET.get('age_case')=="lte"):
+        elif (request.GET.get('age_case')=="lte"):  #=<
             survey_filtered=survey_filtered.filter(age__lte=request.GET.get('age_value')) 
-        elif (request.GET.get('age_case')=="gte"):
+        elif (request.GET.get('age_case')=="gte"):  #>=
             survey_filtered=survey_filtered.filter(age__gte=request.GET.get('age_value'))        
 
     if request.GET.get('sex'):
@@ -138,12 +138,13 @@ def stats(request):
             survey_filtered=survey_filtered.filter(partday=request.GET.get('partday'))
 
     if request.GET.get('sort_value'):
-        if request.GET.get('sort_case')=="asc":
+        if request.GET.get('sort_case')=="asc": #" asc> column"
             survey_filtered=survey_filtered.order_by(request.GET.get('sort_value'))
-        else :
+        else : # desc> -column
             survey_filtered=survey_filtered.order_by("-"+request.GET.get('sort_value'))
 
     calc = {
+        #                                             field   field__avg
         'avg_age':round(survey_filtered.aggregate(Avg("age"))['age__avg'],0),
         'count_rec':survey_filtered.count()
     }
